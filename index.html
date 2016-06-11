@@ -1,0 +1,143 @@
+<html>
+<head>
+	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" type="text/css" href="CSS.css"> 
+			<style type="text/css"> 
+
+html {
+	background: #444444;
+	font-family: monospace;
+	margin-top: 5em;
+}
+
+h1 {
+	background: #0DC78C;
+	font-size:35px;
+	font-family: monospace;
+	
+}
+
+body {
+	width: 450px;
+	padding:15% 25px 25px 25px;
+	margin:auto;
+	background: #fff;
+	text-align:center;
+	padding: 5em 2em;
+}
+
+.usuario, .u {
+	float: left;
+	font-size: 30px;
+}
+
+.ordenador, .o {
+	float:right;
+	font-size:30px;
+}
+
+.o{
+	margin-left:80px;
+}
+
+.clear {
+	clear:both;
+}
+
+input.radio {
+	
+	width: 50px;
+}
+#resultado {
+	margin-top: 70px;
+	text-align: center;
+	font-size: 17px;
+}
+#opciones {
+	margin-top: 60px;
+	font-size:30px;
+	text-align:center;
+	background: #0DC78C;
+}
+
+input{display: none}
+
+
+			</style> 
+	
+	<script>
+$(function() {
+
+
+    $('input[type="radio"]').click(function(){
+
+
+        var elemento = $('input:radio[name=elemento]:checked').val();
+
+
+        var aleatorio=Math.floor(Math.random() * 3) + 1;
+
+
+        if (aleatorio == 1) elemento_contra = "Piedra";
+        else if (aleatorio == 2) elemento_contra = "Papel";
+        else if (aleatorio == 3) elemento_contra = "Tijera";
+        else elemento_contra = "Spock";
+        var ganador;
+
+
+        if (elemento == elemento_contra) ganador = "EMPATE";
+
+
+        else if ((elemento == "Piedra" && elemento_contra == "Tijera") || (elemento == "Papel" && elemento_contra == "Piedra") || (elemento == "Tijera" && elemento_contra == "Papel")) {
+            ganador = "GANA USUARIO";
+
+
+
+            var actual = parseInt($('.usuario').html());
+            actual += parseInt(1);
+            $('.usuario').html(actual);
+        }
+
+
+        else {
+            ganador = "GANA ORDENADOR";
+
+            var actual = parseInt($('.ordenador').html());
+            actual += parseInt(1);
+            $('.ordenador').html(actual);
+        }
+
+        $('#resultado').html("Usuario juega " + elemento + " - Ordenador juega " + elemento_contra + "<br> El resultado es " + ganador);
+        
+    });
+});
+
+</script>
+	
+</head>
+<body>
+<h1>¿Piedra, Papel o Tijera?</h1>
+	<br>
+	<div class="u">Usuario : </div><div class="usuario">0</div>
+	<div class="ordenador">0</div><div class="o">Ordenador : </div>
+	<br>
+	<div class="clear"></div>
+	<div id="resultado"></div>
+	<br>
+	<div id="opciones">
+		<input type="radio" name="elemento" id="piedra" value="Piedra"><label for="piedra">Piedra	|</label>
+		<input type="radio" name="elemento" id="papel" value="Papel"><label for="papel">Papel	|</label>
+		<input type="radio" name="elemento" id="tijera" value="Tijera"><label for="tijera">Tijera	</label>
+	
+
+	</div>
+	<script type="text/javascript" src="pptls.js"></script>
+		<br>
+		<br>
+	<footer>
+	<p>&copy;All rights reserved. <rel="nofollow">Jluis Rodriguez</a>
+	</footer>
+</body>
+</html>
